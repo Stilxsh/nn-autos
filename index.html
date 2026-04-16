@@ -20,7 +20,7 @@
             --p-glass: rgba(15, 15, 20, 0.85);
             --p-border: rgba(255, 255, 255, 0.08);
             --p-text: #ffffff;
-            --p-text-dim: rgba(255, 255, 255, 0.7); /* Improved contrast for mobile */
+            --p-text-dim: rgba(255, 255, 255, 0.7);
             --p-glow: 0 0 20px rgba(0, 242, 255, 0.4);
             --transition: cubic-bezier(0.23, 1, 0.32, 1);
         }
@@ -35,7 +35,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Only enable custom cursor on desktop */
+        /* Custom Cursor only for Desktop */
         @media (hover: hover) and (pointer: fine) {
             * { cursor: none; }
             #cursor, #cursor-dot { display: block; }
@@ -52,7 +52,7 @@
             letter-spacing: -0.02em;
         }
 
-        /* CUSTOM CURSOR - Hidden by default for mobile */
+        /* CUSTOM CURSOR - Hidden on Mobile */
         #cursor, #cursor-dot {
             display: none;
             position: fixed;
@@ -108,11 +108,6 @@
             z-index: -2;
             pointer-events: none;
             animation: pulseGlow 15s infinite alternate;
-        }
-
-        @keyframes pulseGlow {
-            0% { transform: translate(-20%, -20%) scale(1); }
-            100% { transform: translate(20%, 20%) scale(1.2); }
         }
 
         /* ==========================================================
@@ -198,7 +193,7 @@
 
         .hero h1 {
             font-family: 'Syncopate';
-            font-size: clamp(2.5rem, 12vw, 9rem); /* Scaled for mobile */
+            font-size: clamp(2.5rem, 12vw, 9rem);
             line-height: 0.9;
             margin-bottom: 30px;
             position: relative;
@@ -217,6 +212,11 @@
             color: white;
             -webkit-text-stroke: 0px;
             text-shadow: 0 0 30px var(--p-neon);
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin-bottom: 40px;
         }
 
         .coming-soon-badge {
@@ -339,12 +339,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(1);
+            filter: none; /* Image color restored */
             transition: 0.6s;
-        }
-
-        @media (hover: hover) {
-            .vault-card:hover img { filter: grayscale(0); transform: scale(1.1); }
         }
 
         .vault-info { padding: 25px; }
@@ -352,7 +348,7 @@
 
         .buy-btn {
             width: 100%;
-            min-height: 48px; /* Mobile tap target size */
+            min-height: 48px;
             padding: 15px;
             margin-top: 20px;
             background: transparent;
@@ -368,8 +364,10 @@
             transition: 0.3s;
         }
 
+        .buy-btn:hover { background: var(--p-neon); color: #000; }
+
         /* ==========================================================
-           10. MOBILE COMMAND CENTER
+           10. MOBILE COMMAND CENTER - FIXED BUGGING
            ========================================================== */
         .command-center {
             display: none;
@@ -380,20 +378,21 @@
             background: rgba(5, 5, 5, 0.95);
             backdrop-filter: blur(20px);
             padding: 0 30px;
-            height: 60px;
+            height: 65px;
             border-radius: 100px;
             border: 1px solid var(--p-border);
             z-index: 5000;
             gap: 30px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.9);
             align-items: center;
+            justify-content: center;
         }
 
         .command-center a {
             text-decoration: none;
             color: var(--p-text-dim);
             font-weight: 900;
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             height: 100%;
             display: flex;
@@ -434,8 +433,6 @@
             border-radius: 0;
         }
 
-        .terminal-box input:focus { outline: none; border-left-color: var(--p-neon); }
-
         /* ==========================================================
            12. WHATSAPP & SOCIALS
            ========================================================== */
@@ -452,7 +449,6 @@
             justify-content: center;
             z-index: 4000;
             box-shadow: var(--p-glow);
-            transition: 0.4s;
         }
 
         /* ==========================================================
@@ -466,7 +462,7 @@
             .command-center { display: flex; }
             .desktop-nav { display: none; }
             header { justify-content: center; padding: 20px; }
-            .wa-button { bottom: 100px; width: 55px; height: 55px; }
+            .wa-button { bottom: 100px; }
             .section-container { padding: 60px 6%; }
             .hero { padding: 40px 6%; }
             .hero p { font-size: 0.9rem; }
@@ -514,9 +510,9 @@
             <span class="active">EVOLUTION</span>
             <span>STUDIO</span>
         </h1>
-        <p style="max-width: 600px; margin-bottom: 40px;">The next generation of vehicle interior synthesis. We don't just modify; we rewrite the DNA of your driving experience.</p>
+        <p>The next generation of vehicle interior synthesis. We don't just modify; we rewrite the DNA of your driving experience.</p>
         <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
-            <a href="#booking" class="buy-btn" style="padding: 0 30px; width: auto; background: var(--p-neon); color: #000;">SECURE SPOT</a>
+            <a href="#booking" class="buy-btn" style="padding: 0 30px; width: auto; background: var(--p-neon); color: #000; border: none;">SECURE SPOT</a>
             <a href="#vault" class="buy-btn" style="padding: 0 30px; width: auto; border-color: #fff; color: #fff;">THE VAULT</a>
         </div>
     </section>
@@ -601,7 +597,7 @@
             </div>
             <div>
                 <h3 style="font-family: 'Syncopate'; font-size: 1.8rem; margin-bottom: 20px;">FOLLOW THE<br>EVOLUTION</h3>
-                <p>We post daily build updates, cinematic reveals, and behind-the-scenes engineering on our TikTok. Join the 5k+ community watching the transformation.</p>
+                <p>We post daily build updates, cinematic reveals, and behind-the-scenes engineering on our TikTok.</p>
                 
                 <div class="social-stats">
                     <div class="stat-box">
@@ -611,10 +607,6 @@
                     <div class="stat-box">
                         <span>100+</span>
                         <label>CARS COMPLETED</label>
-                    </div>
-                    <div class="stat-box">
-                        <span>UPGRADES</span>
-                        <label>COMING SOON</label>
                     </div>
                 </div>
                 
@@ -632,9 +624,9 @@
             </div>
             <form id="bookingForm" onsubmit="handleBooking(event)">
                 <input type="text" id="name" placeholder="IDENT_NAME" required>
-                <input type="text" id="vehicle" placeholder="CHASSIS_MODEL (e.g. BMW G20 2021)" required>
-                <input type="text" id="service" placeholder="MOD_TYPE (Ambient / Starlight / Screen)" required>
-                <textarea id="details" rows="5" placeholder="REVENUE_SPEC / ADDITIONAL_DETAILS"></textarea>
+                <input type="text" id="vehicle" placeholder="CHASSIS_MODEL" required>
+                <input type="text" id="service" placeholder="MOD_TYPE" required>
+                <textarea id="details" rows="5" placeholder="REVENUE_SPEC"></textarea>
                 <button type="submit" class="buy-btn" style="background: var(--p-neon); color: #000; border: none;">SEND_TRANSMISSION</button>
             </form>
         </div>
@@ -642,15 +634,15 @@
 
     <footer style="padding: 80px 6%; text-align: center; border-top: 1px solid var(--p-border);">
         <h2 style="font-family: 'Syncopate'; letter-spacing: 10px; margin-bottom: 20px;">PULSE</h2>
-        <p style="color: var(--p-text-dim); font-size: 0.6rem; font-family: 'Space Mono';">ALL SYSTEMS RESERVED. RELAUNCHING 2024. NORTHAMPTON, UK.</p>
+        <p style="color: var(--p-text-dim); font-size: 0.6rem; font-family: 'Space Mono';">ALL SYSTEMS RESERVED. NORTHAMPTON, UK.</p>
     </footer>
 
-    <a class="wa-button" href="https://wa.me/message/HQZUVGUAO4Y2O1" target="_blank" aria-label="Chat on WhatsApp">
+    <a class="wa-button" href="https://wa.me/message/HQZUVGUAO4Y2O1" target="_blank">
         <svg width="30" height="30" fill="black" viewBox="0 0 24 24"><path d="M12.031 6.172c-2.277 0-4.131 1.838-4.131 4.098 0 .813.251 1.57.674 2.193l-.534 1.944 1.977-.513c.594.381 1.302.613 2.014.613 2.277 0 4.132-1.838 4.132-4.099s-1.854-4.136-4.132-4.136zm2.463 5.867c-.102.285-.592.546-.816.58-.223.033-.51.05-.812-.047-.302-.098-.517-.201-.89-.364-.374-.163-.647-.327-.89-.544-.243-.218-.396-.453-.497-.621-.102-.167-.184-.334-.184-.334s-.102-.134-.166-.268c-.064-.134-.102-.267-.064-.436.038-.168.169-.268.238-.335.069-.067.135-.1.181-.134.045-.034.09-.067.135-.067.045 0 .09.017.135.05.045.034.404.986.44 1.053.035.067.035.134.012.201-.023.067-.058.117-.116.184-.058.067-.123.151-.176.201-.053.05-.11.104-.045.218.065.114.288.474.62.77.426.381.785.5.908.564.123.064.195.05.267-.034.072-.084.309-.368.392-.49.083-.122.166-.102.279-.059.113.043.713.336.837.399.124.063.206.096.236.147.03.05.03.285-.072.57zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.985-1.313C8.427 21.517 10.151 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.657 0-3.213-.483-4.529-1.311l-.325-.203-2.695.709.721-2.623-.223-.356C4.121 15.011 3.5 13.565 3.5 12c0-4.687 3.813-8.5 8.5-8.5s8.5 3.813 8.5 8.5-3.813 8.5-8.5 8.5z"/></svg>
     </a>
 
     <script>
-        // 1. CUSTOM CURSOR LOGIC - Added safety check for mouse
+        // 1. CUSTOM CURSOR LOGIC - Safety check for mobile
         const cursor = document.getElementById('cursor');
         const dot = document.getElementById('cursor-dot');
         
