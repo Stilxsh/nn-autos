@@ -35,7 +35,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Custom Cursor only for Desktop */
+        /* Enable custom cursor ONLY on devices with a mouse pointer */
         @media (hover: hover) and (pointer: fine) {
             * { cursor: none; }
             #cursor, #cursor-dot { display: block; }
@@ -52,7 +52,7 @@
             letter-spacing: -0.02em;
         }
 
-        /* CUSTOM CURSOR - Hidden on Mobile */
+        /* CUSTOM CURSOR - Hidden on touch devices by default */
         #cursor, #cursor-dot {
             display: none;
             position: fixed;
@@ -108,6 +108,11 @@
             z-index: -2;
             pointer-events: none;
             animation: pulseGlow 15s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: translate(-20%, -20%) scale(1); }
+            100% { transform: translate(20%, 20%) scale(1.2); }
         }
 
         /* ==========================================================
@@ -214,11 +219,6 @@
             text-shadow: 0 0 30px var(--p-neon);
         }
 
-        .hero p {
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-
         .coming-soon-badge {
             display: inline-block;
             border: 1px solid var(--p-neon);
@@ -296,22 +296,6 @@
             overflow: hidden;
         }
 
-        .social-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .stat-box {
-            border-left: 2px solid var(--p-neon);
-            padding-left: 15px;
-            min-width: 120px;
-        }
-
-        .stat-box span { display: block; font-family: 'Syncopate'; font-size: 1.2rem; }
-        .stat-box label { font-family: 'Space Mono'; font-size: 0.55rem; color: var(--p-text-dim); }
-
         /* ==========================================================
            9. THE PRODUCT VAULT (E-COMMERCE)
            ========================================================== */
@@ -339,7 +323,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: none; /* Image color restored */
+            /* REMOVED GRAYSCALE FILTER - Images now in full color */
+            filter: none; 
             transition: 0.6s;
         }
 
@@ -364,10 +349,8 @@
             transition: 0.3s;
         }
 
-        .buy-btn:hover { background: var(--p-neon); color: #000; }
-
         /* ==========================================================
-           10. MOBILE COMMAND CENTER - FIXED BUGGING
+           10. MOBILE COMMAND CENTER - BUG FIXES
            ========================================================== */
         .command-center {
             display: none;
@@ -378,7 +361,7 @@
             background: rgba(5, 5, 5, 0.95);
             backdrop-filter: blur(20px);
             padding: 0 30px;
-            height: 65px;
+            height: 65px; /* Fixed height for stability */
             border-radius: 100px;
             border: 1px solid var(--p-border);
             z-index: 5000;
@@ -420,19 +403,6 @@
             font-size: 0.7rem;
         }
 
-        .terminal-box input, .terminal-box textarea {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-left: 2px solid var(--p-border);
-            padding: 12px 20px;
-            color: var(--p-neon);
-            margin-bottom: 25px;
-            font-family: 'Space Mono';
-            font-size: 0.9rem;
-            border-radius: 0;
-        }
-
         /* ==========================================================
            12. WHATSAPP & SOCIALS
            ========================================================== */
@@ -462,10 +432,9 @@
             .command-center { display: flex; }
             .desktop-nav { display: none; }
             header { justify-content: center; padding: 20px; }
-            .wa-button { bottom: 100px; }
+            .wa-button { bottom: 100px; } /* Moves up to avoid navbar */
             .section-container { padding: 60px 6%; }
             .hero { padding: 40px 6%; }
-            .hero p { font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -479,7 +448,7 @@
     <div class="ambient-glow" style="bottom: 10%; right: 5%; background: var(--p-neon);"></div>
 
     <div class="hype-banner">
-        <span>PULSE AUTO WORKS // NORTHAMPTON HQ // LAUNCHING SOON // BOOKINGS RESTRICTED // FOLLOW TIKTOK @PULSE.AUTO.WORKS // </span>
+        <span>PULSE AUTO WORKS // NORTHAMPTON HQ // LAUNCHING SOON // FOLLOW TIKTOK @PULSE.AUTO.WORKS // </span>
     </div>
 
     <header>
@@ -510,7 +479,7 @@
             <span class="active">EVOLUTION</span>
             <span>STUDIO</span>
         </h1>
-        <p>The next generation of vehicle interior synthesis. We don't just modify; we rewrite the DNA of your driving experience.</p>
+        <p style="max-width: 600px; margin-bottom: 40px; color: var(--p-text-dim);">The next generation of vehicle interior synthesis. We rewrite the DNA of your driving experience.</p>
         <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
             <a href="#booking" class="buy-btn" style="padding: 0 30px; width: auto; background: var(--p-neon); color: #000; border: none;">SECURE SPOT</a>
             <a href="#vault" class="buy-btn" style="padding: 0 30px; width: auto; border-color: #fff; color: #fff;">THE VAULT</a>
@@ -523,21 +492,18 @@
         
         <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
             <div class="service-card">
-                <span class="service-id">MOD-01</span>
                 <h3>Ambient Lighting</h3>
                 <p>Advanced multi-zone fiber optic deployment. Integrated into vehicle bus for seamless OEM control.</p>
                 <label style="color: var(--p-neon); font-family: 'Space Mono'; font-size: 0.7rem;">AVAILABILITY: SOON</label>
             </div>
             <div class="service-card">
-                <span class="service-id">MOD-02</span>
                 <h3>Starlight Headliner</h3>
                 <p>Hand-woven cosmic starscapes. 1000+ points of light with dynamic twinkle and meteor patterns.</p>
                 <label style="color: var(--p-neon); font-family: 'Space Mono'; font-size: 0.7rem;">AVAILABILITY: SOON</label>
             </div>
             <div class="service-card">
-                <span class="service-id">MOD-03</span>
                 <h3>Carplay/Android Auto</h3>
-                <p>Legacy system hardware swaps. Wireless Apple CarPlay, Android Auto, and 4K screen upgrades.</p>
+                <p>Wireless Apple CarPlay, Android Auto, and 4K screen hardware upgrades.</p>
                 <label style="color: var(--p-neon); font-family: 'Space Mono'; font-size: 0.7rem;">AVAILABILITY: SOON</label>
             </div>
         </div>
@@ -554,7 +520,6 @@
                 </div>
                 <div class="vault-info">
                     <h3>AMBIENT LIGHTING</h3>
-                    <p>64-million color ambient kit.</p>
                     <span class="vault-price">£199.00</span>
                     <button class="buy-btn" onclick="comingSoon()">COMING_SOON</button>
                 </div>
@@ -564,8 +529,7 @@
                     <img src="https://i.ibb.co/kg40dn6h/IMG-6227.jpg" alt="Kit 2">
                 </div>
                 <div class="vault-info">
-                    <h3>Starlights</h3>
-                    <p>DIY Starlight Headliner.</p>
+                    <h3>STARLIGHTS</h3>
                     <span class="vault-price">£345.00</span>
                     <button class="buy-btn" onclick="comingSoon()">COMING_SOON</button>
                 </div>
@@ -576,7 +540,6 @@
                 </div>
                 <div class="vault-info">
                     <h3>SCREEN UPGRADES</h3>
-                    <p>Carplay/Android Auto Display Upgrades.</p>
                     <span class="vault-price">£499.00</span>
                     <button class="buy-btn" onclick="comingSoon()">COMING_SOON</button>
                 </div>
@@ -587,29 +550,16 @@
     <section id="radar" class="section-container">
         <span class="section-label">03 // SOCIAL_RADAR</span>
         <h2 class="section-title">LIVE_FEED</h2>
-        
         <div class="tiktok-section">
             <div class="tiktok-embed-container">
-                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@pulse.auto.works" data-unique-id="pulse.auto.works" data-embed-type="creator" style="max-width: 100%;">
-                    <section> <a target="_blank" href="https://www.tiktok.com/@pulse.auto.works?refer=creator_embed">@pulse.auto.works</a> </section>
+                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@pulse.auto.works" data-unique-id="pulse.auto.works" data-embed-type="creator">
+                    <section> <a target="_blank" href="https://www.tiktok.com/@pulse.auto.works">@pulse.auto.works</a> </section>
                 </blockquote>
                 <script async src="https://www.tiktok.com/embed.js"></script>
             </div>
             <div>
                 <h3 style="font-family: 'Syncopate'; font-size: 1.8rem; margin-bottom: 20px;">FOLLOW THE<br>EVOLUTION</h3>
-                <p>We post daily build updates, cinematic reveals, and behind-the-scenes engineering on our TikTok.</p>
-                
-                <div class="social-stats">
-                    <div class="stat-box">
-                        <span>5K+</span>
-                        <label>OPERATORS</label>
-                    </div>
-                    <div class="stat-box">
-                        <span>100+</span>
-                        <label>CARS COMPLETED</label>
-                    </div>
-                </div>
-                
+                <p>Join the community watching the daily transformation on our TikTok.</p>
                 <a href="https://www.tiktok.com/@pulse.auto.works" target="_blank" class="buy-btn" style="display: inline-block; width: auto; margin-top: 30px; padding: 0 40px;">OPEN_TIKTOK</a>
             </div>
         </div>
@@ -618,31 +568,26 @@
     <section id="booking" class="section-container">
         <span class="section-label">04 // COMMENCE_LINK</span>
         <div class="terminal-box">
-            <div class="terminal-header">
-                <span>PULSE_ENQUIRY_SYSTEM_v4.0</span>
-                <span>[LOGGED_IN]</span>
-            </div>
-            <form id="bookingForm" onsubmit="handleBooking(event)">
+            <form onsubmit="handleBooking(event)">
                 <input type="text" id="name" placeholder="IDENT_NAME" required>
                 <input type="text" id="vehicle" placeholder="CHASSIS_MODEL" required>
                 <input type="text" id="service" placeholder="MOD_TYPE" required>
-                <textarea id="details" rows="5" placeholder="REVENUE_SPEC"></textarea>
+                <textarea id="details" rows="5" placeholder="REVENUE_SPEC / ADDITIONAL_DETAILS"></textarea>
                 <button type="submit" class="buy-btn" style="background: var(--p-neon); color: #000; border: none;">SEND_TRANSMISSION</button>
             </form>
         </div>
     </section>
 
     <footer style="padding: 80px 6%; text-align: center; border-top: 1px solid var(--p-border);">
-        <h2 style="font-family: 'Syncopate'; letter-spacing: 10px; margin-bottom: 20px;">PULSE</h2>
         <p style="color: var(--p-text-dim); font-size: 0.6rem; font-family: 'Space Mono';">ALL SYSTEMS RESERVED. NORTHAMPTON, UK.</p>
     </footer>
 
-    <a class="wa-button" href="https://wa.me/message/HQZUVGUAO4Y2O1" target="_blank">
+    <a class="wa-button" href="https://wa.me/message/HQZUVGUAO4Y2O1" target="_blank" aria-label="Chat on WhatsApp">
         <svg width="30" height="30" fill="black" viewBox="0 0 24 24"><path d="M12.031 6.172c-2.277 0-4.131 1.838-4.131 4.098 0 .813.251 1.57.674 2.193l-.534 1.944 1.977-.513c.594.381 1.302.613 2.014.613 2.277 0 4.132-1.838 4.132-4.099s-1.854-4.136-4.132-4.136zm2.463 5.867c-.102.285-.592.546-.816.58-.223.033-.51.05-.812-.047-.302-.098-.517-.201-.89-.364-.374-.163-.647-.327-.89-.544-.243-.218-.396-.453-.497-.621-.102-.167-.184-.334-.184-.334s-.102-.134-.166-.268c-.064-.134-.102-.267-.064-.436.038-.168.169-.268.238-.335.069-.067.135-.1.181-.134.045-.034.09-.067.135-.067.045 0 .09.017.135.05.045.034.404.986.44 1.053.035.067.035.134.012.201-.023.067-.058.117-.116.184-.058.067-.123.151-.176.201-.053.05-.11.104-.045.218.065.114.288.474.62.77.426.381.785.5.908.564.123.064.195.05.267-.034.072-.084.309-.368.392-.49.083-.122.166-.102.279-.059.113.043.713.336.837.399.124.063.206.096.236.147.03.05.03.285-.072.57zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.985-1.313C8.427 21.517 10.151 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.657 0-3.213-.483-4.529-1.311l-.325-.203-2.695.709.721-2.623-.223-.356C4.121 15.011 3.5 13.565 3.5 12c0-4.687 3.813-8.5 8.5-8.5s8.5 3.813 8.5 8.5-3.813 8.5-8.5 8.5z"/></svg>
     </a>
 
     <script>
-        // 1. CUSTOM CURSOR LOGIC - Safety check for mobile
+        // 1. CUSTOM CURSOR LOGIC - Added safety check for mobile devices
         const cursor = document.getElementById('cursor');
         const dot = document.getElementById('cursor-dot');
         
